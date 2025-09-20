@@ -1,0 +1,1 @@
+"""Money Trader backend package."""

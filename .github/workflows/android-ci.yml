@@ -1,0 +1,39 @@
+name: Android CI
+
+on:
+  push:
+    paths:
+      - 'mobile/**'
+      - '.github/workflows/android-ci.yml'
+  pull_request:
+    paths:
+      - 'mobile/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.16.0'
+      - name: Install dependencies
+        working-directory: mobile
+        run: flutter pub get
+      - name: Format check
+        working-directory: mobile
+        run: flutter format --set-exit-if-changed lib test
+      - name: Analyze
+        working-directory: mobile
+        run: flutter analyze
+      - name: Test
+        working-directory: mobile
+        run: flutter test
+      - name: Build APK
+        working-directory: mobile
+        run: flutter build apk --debug
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: money-trader-debug-apk
+          path: mobile/build/app/outputs/flutter-apk/app-debug.apk

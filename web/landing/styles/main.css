@@ -1,0 +1,99 @@
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  margin: 0;
+  color: #0f172a;
+  background: linear-gradient(180deg, #0f172a 0%, #111827 40%, #f8fafc 40%);
+}
+
+.hero {
+  text-align: center;
+  padding: 120px 16px 80px;
+  color: #f8fafc;
+}
+
+.hero .cta {
+  display: inline-block;
+  margin-top: 24px;
+  padding: 12px 24px;
+  background: #22d3ee;
+  color: #0f172a;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.hero .disclaimer {
+  margin-top: 12px;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  padding: 32px;
+}
+
+.features div {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 10px 40px rgba(15, 23, 42, 0.08);
+}
+
+.waitlist {
+  background: #0f172a;
+  color: #f8fafc;
+  padding: 48px 16px;
+  text-align: center;
+}
+
+.waitlist form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.waitlist input {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+}
+
+.waitlist button {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: #22d3ee;
+  color: #0f172a;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+footer {
+  padding: 24px;
+  text-align: center;
+  background: #0b1120;
+  color: #e2e8f0;
+}
+
+footer nav {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+footer a {
+  color: #22d3ee;
+  text-decoration: none;
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding-top: 80px;
+  }
+}

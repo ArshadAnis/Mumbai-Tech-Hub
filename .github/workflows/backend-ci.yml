@@ -1,0 +1,30 @@
+name: Backend CI
+
+on:
+  push:
+    paths:
+      - 'backend/**'
+      - '.github/workflows/backend-ci.yml'
+  pull_request:
+    paths:
+      - 'backend/**'
+
+jobs:
+  lint-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install Poetry
+        run: pip install poetry
+      - name: Install dependencies
+        working-directory: backend
+        run: poetry install --no-interaction --no-ansi
+      - name: Run tests
+        working-directory: backend
+        run: poetry run pytest -q
+      - name: Build Docker image
+        working-directory: backend
+        run: docker build -t money-trader-backend:ci .
